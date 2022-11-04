@@ -58,6 +58,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
+nvim_lsp.jdtls.setup {
+  on_attach = on_attach,
+  filetypes = { "java" },
+  cmd = { "jdtls" },
+  single_file_support = true,
+  capabilities = capabilities
+}
+
 nvim_lsp.clangd.setup {
   on_attach = on_attach,
   filetypes = { "c", "cpp", "objc", "objcpp" },
@@ -73,14 +81,14 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities
 }
 
-nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
-}
+--nvim_lsp.sourcekit.setup {
+--  on_attach = on_attach,
+--}
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,

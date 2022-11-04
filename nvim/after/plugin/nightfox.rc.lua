@@ -1,25 +1,27 @@
-local palettes = {
-  carbonfox = {
-    comment = "#60728a",
+local options = {
+  transparent = true,
+  terminal_colors = true,
+  styles = {
+    comments = "italic",
+    keywords = "bold",
+    types = "italic,bold",
+  },
+  inverse = {
+    match_paren = true,
+    visual = true,
+    search = true,
   }
 }
 
 require('nightfox').setup({
-  palettes = palettes,
-  options = {
-    terminal_colors = true,
-    transparent = true,
-    styles = {
-      comments = "italic",
-      keywords = "bold",
-      types = "italic,bold",
-    },
-    inverse = {
-      match_paren = true,
-      visual = true,
-      search = true
+options = options,
+palettes = {},
+specs = {
+  carbonfox = {
+    syntax = {
     }
   }
+},
 })
 
-vim.cmd("colorscheme carbonfox")
+vim.cmd("colorscheme terafox")

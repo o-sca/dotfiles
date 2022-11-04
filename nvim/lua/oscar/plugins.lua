@@ -36,6 +36,8 @@ packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+  use 'folke/zen-mode.nvim'
   use 'akinsho/nvim-bufferline.lua'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
+  use 'mfussenegger/nvim-jdtls' -- Java LSP
 end)
