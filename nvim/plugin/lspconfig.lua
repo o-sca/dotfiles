@@ -3,13 +3,13 @@
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
+local util = require('lspconfig.util')
 local protocol = require('vim.lsp.protocol')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o>
@@ -58,14 +58,36 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.jdtls.setup {
-  on_attach = on_attach,
-  filetypes = { "java" },
-  cmd = { "jdtls" },
+-- Gofmt Format Attach
+local go_on_attach = function(_, _)
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function() vim.lsp.buf.formatting() end
+  }
+)
+end
+
+-- Golang LSP
+nvim_lsp.gopls.setup {
+  on_attach = go_on_attach,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  rootdir = util.root_pattern("go.work", "go.mod", ".git"),
   single_file_support = true,
-  capabilities = capabilities
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
 }
 
+-- C lang LSP
 nvim_lsp.clangd.setup {
   on_attach = on_attach,
   filetypes = { "c", "cpp", "objc", "objcpp" },
@@ -74,11 +96,13 @@ nvim_lsp.clangd.setup {
   capabilities = capabilities
 }
 
+-- JS LSP
 nvim_lsp.flow.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
+-- TS LSP
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
@@ -86,10 +110,7 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
---nvim_lsp.sourcekit.setup {
---  on_attach = on_attach,
---}
-
+-- Lua LSP
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {

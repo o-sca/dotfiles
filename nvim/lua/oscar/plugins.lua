@@ -20,7 +20,6 @@ packer.startup(function(use)
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
@@ -39,5 +38,4 @@ packer.startup(function(use)
   use 'folke/zen-mode.nvim'
   use 'akinsho/nvim-bufferline.lua'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
-  use 'mfussenegger/nvim-jdtls' -- Java LSP
 end)

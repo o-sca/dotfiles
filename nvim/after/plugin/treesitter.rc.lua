@@ -13,13 +13,12 @@ ts.setup {
   ensure_installed = {
     "c",
     "tsx",
-    "php",
     "json",
     "css",
     "html",
     "lua",
     "javascript",
-    "java"
+    "go"
   },
   autotag = {
     enable = true,
