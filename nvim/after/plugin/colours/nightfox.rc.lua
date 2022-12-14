@@ -1,3 +1,6 @@
+local status, nightfox = pcall(require, 'nightfox')
+if (not status) then return end
+
 local options = {
   transparent = true,
   terminal_colors = true,
@@ -13,15 +16,15 @@ local options = {
   }
 }
 
-require('nightfox').setup({
-options = options,
-palettes = {},
-specs = {
-  carbonfox = {
-    syntax = {
+nightfox.setup({
+  options = options,
+  palettes = {},
+  specs = {
+    carbonfox = {
+      syntax = {
+      }
     }
-  }
-},
+  },
 })
 
-vim.cmd("colorscheme terafox")
+vim.cmd("colorscheme carbonfox")

@@ -4,13 +4,15 @@ if (not status) then
   return
 end
 
-vim.cmd [[packadd packer.nvim]]
+vim.cmd[[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  use "EdenEast/nightfox.nvim"
+  --use { 'Everblush/everblush.nvim', as = 'everblush' }
+  --use "EdenEast/nightfox.nvim"
+  use 'folke/tokyonight.nvim'
+  use 'nvim-lua/plenary.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
@@ -23,19 +25,19 @@ packer.startup(function(use)
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+     'nvim-treesitter/nvim-treesitter',
+     run = function()
+         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+         ts_update()
+     end,
   }
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
-  use 'norcalli/nvim-colorizer.lua'
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-  use 'folke/zen-mode.nvim'
-  use 'akinsho/nvim-bufferline.lua'
-  use 'dinhhuy258/git.nvim' -- For git blame & browse
 end)

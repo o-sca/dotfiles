@@ -13,6 +13,7 @@ ts.setup {
   ensure_installed = {
     "c",
     "tsx",
+    "typescript",
     "json",
     "css",
     "html",

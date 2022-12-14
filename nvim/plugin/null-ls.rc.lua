@@ -9,15 +9,14 @@ null_ls.setup({
     null_ls.builtins.diagnostics.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})'
     }),
-    null_ls.builtins.diagnostics.fish
   },
-  on_attach = function(client, bufnr)
+  on_attach = function(client, _)
     if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_clear_autocmds { buffer = 0, group = augroup_format }
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup_format,
         buffer = 0,
-        callback = function() vim.lsp.buf.formatting_seq_sync() end
+        callback = function() vim.lsp.buf.format() end
       })
       end
   end,
