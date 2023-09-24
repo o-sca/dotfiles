@@ -52,3 +52,4 @@
   "vim-illuminate": { "branch": "master", "commit": "6acf7d4a18255a3ddc43770866c8e148fe85af7b" },
   "vim-startuptime": { "branch": "master", "commit": "454b3de856b7bd298700de33d79774ca9b9e3875" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
+}
