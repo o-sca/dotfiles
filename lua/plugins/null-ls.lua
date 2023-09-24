@@ -6,7 +6,7 @@ end
 return {
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "mason.nvim" },
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufWritePre" },
   opts = function()
     local sources =
     {
@@ -16,7 +16,7 @@ return {
         end,
       }),
       null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.gofumpt,
+      --null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.clang_format,
     }
     return { sources = sources }

@@ -3,7 +3,6 @@ return {
   opts = {
     ensured_installed = {
       "c",
-      "tsx",
       "typescript",
       "json",
       "css",
