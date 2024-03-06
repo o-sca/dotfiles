@@ -10,29 +10,29 @@ return {
         {
           "filename",
           file_status = true,
-          path = 0
-        }
+          path = 0,
+        },
       },
       lualine_x = {
         {
-          'diagnostics',
+          "diagnostics",
           sources = { "nvim_diagnostic" },
           symbols = {
-            error = ' ',
-            warn = ' ',
-            info = ' ',
-            hint = ' '
-          }
+            error = " ",
+            warn = " ",
+            info = " ",
+            hint = " ",
+          },
         },
-        'encoding',
-        'filetype'
+        "encoding",
+        "filetype",
       },
       lualine_y = {
-        "progress"
+        "progress",
       },
       lualine_z = {
-        "location"
-      }
-    }
-  }
+        "location",
+      },
+    },
+  },
 }
